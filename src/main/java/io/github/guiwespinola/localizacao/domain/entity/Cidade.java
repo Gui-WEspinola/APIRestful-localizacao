@@ -16,11 +16,13 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class Cidade {
 
     @Id
     @Column(name = "id_cidade")
-    private long id;
+    private Long id;
 
     @Column(name = "nome", length = 85)
     @NotNull
