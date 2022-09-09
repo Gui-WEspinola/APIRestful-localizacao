@@ -20,6 +20,7 @@ public class LocalizacaoApplication implements CommandLineRunner {
 		listarCidadesPorNome(nomeCidade);
 		listarCidadesPorNome("sAL%");
 		listarCidadesPorHabitantes();
+		listarCidadesPorHabitantesLessThan(1000000L);
 	}
 
 	@Transactional
@@ -36,9 +37,12 @@ public class LocalizacaoApplication implements CommandLineRunner {
 		cidadeRepository.findByHabitantes(4698523L).forEach(System.out::println);
 	}
 
+	void listarCidadesPorHabitantesLessThan(Long habitantes){
+		cidadeRepository.findByHabitantesLessThan(habitantes).forEach(System.out::println);
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(LocalizacaoApplication.class, args);
 	}
-
 
 }
