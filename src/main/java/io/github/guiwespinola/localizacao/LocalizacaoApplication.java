@@ -17,11 +17,9 @@ public class LocalizacaoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		String nomeCidade = "Salvador";
-		String letra = "a";
 		listarCidadesPorNome(nomeCidade);
+		listarCidadesPorNome("sAL%");
 		listarCidadesPorHabitantes();
-		listarCidadesPelaPrimeiraLetra(nomeCidade);
-		listarCidadesContendoLetra(letra);
 	}
 
 	@Transactional
@@ -31,15 +29,7 @@ public class LocalizacaoApplication implements CommandLineRunner {
 	}
 
 	void listarCidadesPorNome(String nome){
-		cidadeRepository.findByNome(nome).forEach(System.out::println);
-	}
-
-	void listarCidadesPelaPrimeiraLetra(String nome){
-		cidadeRepository.findByNomeStartingWith(nome.substring(0,1)).forEach(System.out::println);
-	}
-
-	void listarCidadesContendoLetra(String letra){
-		cidadeRepository.findByNomeContaining(letra).forEach(System.out::println);
+		cidadeRepository.findByNomeLike(nome).forEach(System.out::println);
 	}
 
 	void listarCidadesPorHabitantes(){
