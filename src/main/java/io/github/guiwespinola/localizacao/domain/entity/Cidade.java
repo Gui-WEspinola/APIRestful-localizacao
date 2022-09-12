@@ -29,7 +29,6 @@ public class Cidade {
     private String nome;
 
     @Column(name = "qtd_habitantes")
-    @NotNull
     private Long habitantes;
 
     @Override
